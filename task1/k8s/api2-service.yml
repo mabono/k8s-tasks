@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: taks1-api1
+  name: task1-api2
 spec:
   selector:
     matchLabels:
-      app: taks1-api1
+      app: task1-api2
   template:
     metadata:
       labels:
-        app: taks1-api1
+        app: task1-api2
     spec:
       containers:
-      - name: api1
-        image: taks1/api1
+      - name: api2
+        image: task1/api2
         imagePullPolicy: Never
         resources:
           limits:
@@ -25,12 +25,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: taks1-api1
+  name: task1-api2
 spec:
   selector:
-    app: taks1-api1
+    app: task1-api2
   ports:
   - port: 80
     protocol: TCP
     name: http
-  
