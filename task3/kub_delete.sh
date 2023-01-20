@@ -1,0 +1,2 @@
+#!/bin/bash
+kubectl delete -f ./api1/api1-deployment.yml -f ./api1/api1-service.yml -f ./api2/api2-deployment.yml -f ./api2/api2-service.yml -f ./bff/bff-deployment.yml -f ./bff/bff-service.yml -f ./ingress.yml
