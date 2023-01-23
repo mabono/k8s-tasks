@@ -18,7 +18,7 @@ app = Flask(__name__)
 #                     attemps += 1
 #     return retry_wrapper
 
-@retry(HTTPError,tries=10, delay=2)
+@retry(tries=10, delay=2)
 def contact_service(url):
     return requests.get(url)
     
@@ -27,11 +27,12 @@ def contact_service(url):
 def index():
     try:
         r = contact_service('http://api2')
-        text = r.text
-        return text
     except HTTPError as e:
         if e.code == 500:
             return "Servirce currently unavailable. Waiting..."
+    else:
+        text = r.text
+        return text
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=80)

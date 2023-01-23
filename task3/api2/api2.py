@@ -1,6 +1,6 @@
 from flask import Flask
 import random
-
+from requests.exceptions import HTTPError
 
 app = Flask(__name__)
 
@@ -8,7 +8,7 @@ app = Flask(__name__)
 def index():
     if_error = random.randint(0,1)
     if (if_error == 1):
-        return "Dummy Error", 500
+        raise Exception(500)
     else:
         return "Working just fine"
 
