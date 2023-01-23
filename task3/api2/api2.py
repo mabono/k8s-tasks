@@ -7,8 +7,9 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     if_error = random.randint(0,1)
+    # if_error = 1
     if (if_error == 1):
-        raise Exception(500)
+        return 500
     else:
         return "Working just fine"
 
